@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tagRecommendation>
+<mainDataPath>data/</mainDataPath>
+<scriptPath>scripts/SO/</scriptPath>
+<mainFolder>SO/</mainFolder>
+<stopwordsPath>stopwords/</stopwordsPath>
+<lucenePath>Lucene/</lucenePath>
+
+<task id="1">
+	<taskName>runExperiment</taskName>
+	
+	<systemName>so</systemName>
+	
+	<!-- FOLKSONOMY INDEX -->
+	<postDirectory>postRecommender</postDirectory>
+	<resetIndex>true</resetIndex>
+	<restorePostDirectory>false</restorePostDirectory>
+	<stopwordsFiles>stopwordsOnix.txt</stopwordsFiles>
+	<doNormalization>false</doNormalization>
+	
+	<!-- DATE PROCESSOR -->
+	<dateFormat>yyyy-MM-dd'T'HH:mm:ss.SSS</dateFormat>
+	
+	<!-- PROFILE RECOMMENDERS -->
+	<recTitleToTagCacheL1Size>3000</recTitleToTagCacheL1Size>
+	<recTitleToTagCacheL2Size>100</recTitleToTagCacheL2Size>
+	<recTitleToTagMinSizeToCache>20</recTitleToTagMinSizeToCache>
+	<recTitleToTagMinSizeToReportDeSynch>20</recTitleToTagMinSizeToReportDeSynch>
+	<recTitleToTagMinSizeToProfile>20</recTitleToTagMinSizeToProfile>
+	<recTitleToTagCachePostSpan>1000</recTitleToTagCachePostSpan>
+	<recTitleToTagProfileField>title</recTitleToTagProfileField>
+	<recTitleToTagTagField>tag</recTitleToTagTagField>
+	
+	<recTagToTagCacheL1Size>3000</recTagToTagCacheL1Size>
+	<recTagToTagCacheL2Size>100</recTagToTagCacheL2Size>
+	<recTagToTagMinSizeToCache>20</recTagToTagMinSizeToCache>
+	<recTagToTagMinSizeToReportDeSynch>20</recTagToTagMinSizeToReportDeSynch>
+	<recTagToTagMinSizeToProfile>20</recTagToTagMinSizeToProfile>
+	<recTagToTagCachePostSpan>1000</recTagToTagCachePostSpan>
+	<recTagToTagProfileField>tag</recTagToTagProfileField>
+	<recTagToTagTagField>tag</recTagToTagTagField>
+	
+	<recResourceCacheL1Size>0</recResourceCacheL1Size>
+	<recResourceCacheL2Size>0</recResourceCacheL2Size>
+	<recResourceMinSizeToCache>9999</recResourceMinSizeToCache>
+	<recResourceMinSizeToReportDeSynch>9999</recResourceMinSizeToReportDeSynch>
+	<recResourceMinSizeToProfile>9999</recResourceMinSizeToProfile>
+	<recResourceCachePostSpan>100000</recResourceCachePostSpan>
+	<recResourceProfileField>item</recResourceProfileField>
+	<recResourceTagField>tag</recResourceTagField>
+	
+	<recUserCacheL1Size>1000</recUserCacheL1Size>
+	<recUserCacheL2Size>200</recUserCacheL2Size>
+	<recUserMinSizeToCache>100</recUserMinSizeToCache>
+	<recUserMinSizeToReportDeSynch>5</recUserMinSizeToReportDeSynch>
+	<recUserMinSizeToProfile>1</recUserMinSizeToProfile>
+	<recUserCachePostSpan>1000</recUserCachePostSpan>
+	<recUserProfileField>author</recUserProfileField>
+	<recUserTagField>tag</recUserTagField>
+	
+	<!-- MERGRERS -->
+	<mergersParamPath>baseRec/P_SO_mergersFeedback.xml</mergersParamPath>
+	
+	<!-- FEEDBACK -->
+	<feedbackParamPath>baseRec/P_SO_mergersFeedback.xml</feedbackParamPath>
+	
+	<!--#############################################################################
+		 #####################         EVALUATION             ########################
+		 #############################################################################-->
+	
+	<!-- SOURCE FILES -->
+	<sourceFileNames>tasBibLikeSort.dat</sourceFileNames>--><!-- both training and testing files, what is used at which stage is decided by filters, no spaces in file names allowed -->
+	
+	<!-- RESULT FILES -->
+	<resPathPrefix>recommendationResults/</resPathPrefix>
+	<resPathSuffix></resPathSuffix>
+	<resRecommenderNames>title TAGtoTAG TTLtoTAG contentRelated resource resourceRelated userFreq userDate userDistFrequency userDistFrequencyIntersection</resRecommenderNames>
+	<experimentLogger>recommendationResults/experimentLogger.dat</experimentLogger>
+	<realTagsLog>recommendationResults/realTags.dat</realTagsLog>
+	
+	<!-- FILTERS -->
+	
+	<!-- Time range for posts that should be recorded -->
+	<indexFilterSuffix>
+		IdxDate
+	</indexFilterSuffix>
+	
+	<postFilterIdxDate>field</postFilterIdxDate>
+	<postFilterFieldTypeIdxDate>fromLine</postFilterFieldTypeIdxDate>
+	<postFilterFieldIndexIdxDate>4</postFilterFieldIndexIdxDate>
+	<postFilterAcceptedValuesIdxDate>2000-01-01T00:00:00.000	3009-09-13T00:00:00.000</postFilterAcceptedValuesIdxDate>--> <!-- full run -->
+	<!--<postFilterAcceptedValuesIdxDate>2009-09-13T00:00:00.000	3009-11-25T00:00:00.000</postFilterAcceptedValuesIdxDate>--> <!-- 60 - 100 -->
+	<lineFilterFieldOperationIdxDate>isBetween</lineFilterFieldOperationIdxDate>
+	
+	<!-- Time range for posts that should be used to train the merge coefficients -->
+	<evaluateFilterSuffix>
+		EvlDate
+	</evaluateFilterSuffix>
+	
+	<postFilterEvlDateTest>dateTest</postFilterEvlDateTest>
+	
+	<postFilterEvlDate>field</postFilterEvlDate>
+	<postFilterFieldTypeEvlDate>fromLine</postFilterFieldTypeEvlDate>
+	<postFilterFieldIndexEvlDate>4</postFilterFieldIndexEvlDate>
+	<postFilterAcceptedValuesEvlDate>2009-09-13T00:00:00.000	3009-11-25T00:00:00.000</postFilterAcceptedValuesEvlDate>
+	<lineFilterFieldOperationEvlDate>isBetween</lineFilterFieldOperationEvlDate>
+	
+	<!-- Time range for posts for which the recommendation results should be stored -->
+	<storeResultFilterSuffix>
+		StrDate
+	</storeResultFilterSuffix>
+	
+	<postFilterStrDate>field</postFilterStrDate>
+	<postFilterFieldTypeStrDate>fromPost</postFilterFieldTypeStrDate>
+	<postFilterAcceptedValuesStrDate>2009-11-25T00:00:00.000	3009-11-25T00:00:00.000</postFilterAcceptedValuesStrDate>
+	<postFilterFieldOperationStrDate>isBetween_date</postFilterFieldOperationStrDate>
+</task>
+	
+</tagRecommendation>

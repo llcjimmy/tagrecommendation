@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tagRecommendationParams>
+	<!-- settings of recommendation results mergers and feedback processors -->
+	
+<paramsSet id="1">
+	<setName>mergers</setName>
+	
+	<mergerType>global</mergerType>
+</paramsSet>
+
+<paramsSet id="1">
+	<setName>XXXmergers</setName>
+	
+	<mergerType>personal</mergerType>
+	<mergerMapperBase>author</mergerMapperBase>
+</paramsSet>
+
+<paramsSet id="2">
+	<setName>mergerSettings</setName>
+	
+	<feedbackAccuracyScore>recallAt5</feedbackAccuracyScore>
+
+	<mergerSettingsName>
+		title		range	sum
+	|	tagRel	range	sum
+	|	res		range	sum
+	|	user		range	sum
+	|	resUsr	range	sum
+	</mergerSettingsName>
+</paramsSet>
+
+<paramsSet id="3">
+	<setName>XXXfeedback</setName>
+	
+	<feedbackType>noFeedback</feedbackType>
+</paramsSet>
+
+<paramsSet id="3">
+	<setName>feedback</setName>
+	
+	<feedbackType>basicFeedback</feedbackType>
+	<feedbackBufferSize>1000</feedbackBufferSize>
+	
+	<!-- Time range for posts for which the feedback should be processed -->
+	<feedbackFilterSuffix>
+		FeedDate
+	</feedbackFilterSuffix>
+	
+	<postFilterFeedDate>field</postFilterFeedDate>
+	<postFilterFieldTypeFeedDate>fromPost</postFilterFieldTypeFeedDate>
+	<postFilterAcceptedValuesFeedDate>2009-09-13T00:00:00.000	3009-11-25T00:00:00.000</postFilterAcceptedValuesFeedDate>
+	<postFilterFieldOperationFeedDate>isBetween_date</postFilterFieldOperationFeedDate>
+</paramsSet>
+	
+	
+	
+</tagRecommendationParams>

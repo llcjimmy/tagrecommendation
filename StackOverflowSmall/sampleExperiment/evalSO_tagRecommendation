@@ -1,0 +1,1 @@
+java -Xmx1000M -classpath "snaffTagRecommender.jar" snaff.tagRecommender.evaluation.StarterTagRecEval "data/SO/recommendationResults/" 10 notNormalize "realTags.dat" title.dat resource.dat resourceRelated.dat userDistFrequency.dat userDistFrequencyIntersection.dat userDate.dat userFreq.dat contentRelated.dat
