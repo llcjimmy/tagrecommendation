@@ -1,0 +1,1 @@
+java -Xmx1000M -classpath "snaffTagRecommender.jar;lucene-2.9.0/lucene-core-2.9.0.jar;lucene-2.9.0/contrib/queries/lucene-queries-2.9.0.jar" snaff.tagRecommender.StarterTagRecIter "scripts/SO/F_SO_tagRecommendation.xml"
