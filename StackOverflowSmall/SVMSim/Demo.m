@@ -72,4 +72,8 @@ toc;
 mRecall(Outputs2',test_label,5)
 mRecall(Outputs2',test_label,10)
 mRecall(Outputs2',test_label,20)
+
+mPrecision(Outputs2',test_label,5)
+mPrecision(Outputs2',test_label,10)
+mPrecision(Outputs2',test_label,20)
 % which will be better for us

@@ -70,3 +70,7 @@ toc;
 mRecall(Outputs,test_label,5)
 mRecall(Outputs,test_label,10)
 mRecall(Outputs,test_label,20)
+
+mPrecision(Outputs,test_label,5)
+mPrecision(Outputs,test_label,10)
+mPrecision(Outputs,test_label,20)
